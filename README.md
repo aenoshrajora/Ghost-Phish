@@ -84,12 +84,12 @@ $ ghost-phish
 - Docker Image Mirror:
   - **DockerHub** : 
     ```
-    docker pull shadowpacket/ghost-phish
+    docker pull shadowpacket/ghost-phish:latest
     ```
 - Temporary Container
 
   ```
-  docker run --rm -ti shadowpacket/ghost-phish
+  docker run --rm -ti shadowpacket/ghost-phish:latest
   ```
   - Remember to mount the `auth` directory.
 

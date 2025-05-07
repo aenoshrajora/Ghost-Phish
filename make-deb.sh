@@ -2,7 +2,7 @@
 
 # Make Deb Package for Ghost Phish (^.^)
 _PACKAGE=ghost-phish
-_VERSION=1.2
+_VERSION=1.3
 _ARCH="all"
 PKG_NAME="${_PACKAGE}_${_VERSION}_${_ARCH}.deb"
 

